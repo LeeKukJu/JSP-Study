@@ -1,0 +1,42 @@
+package dao;
+
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+
+import dto.BoardVO;
+
+public class BoardDAO {
+	
+	private ArrayList<BoardVO> boardList = new ArrayList<BoardVO>();
+	
+	private static BoardDAO instance = new BoardDAO();
+	public static BoardDAO getInstance() {
+		return instance;
+	}
+	
+	
+	
+	public BoardDAO() {
+		BoardVO board = new BoardVO();
+		LocalDate now = LocalDate.now();
+		
+		board.setTitle("게시물 입니당");
+		board.setAuthor("김작가");
+		board.setWriteDate(writeDate);
+	}
+
+
+
+	public ArrayList<BoardVO> getBoardList(){
+		return boardList;
+	}
+	
+	public void insertBoard(BoardVO board) {
+		boardList.add(board);
+	}
+	
+	
+}

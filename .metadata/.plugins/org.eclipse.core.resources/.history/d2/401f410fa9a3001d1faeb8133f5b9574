@@ -1,0 +1,45 @@
+package dao;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+
+import dto.BoardVO;
+
+public class BoardDAO {
+	
+	private ArrayList<BoardVO> boardList = new ArrayList<BoardVO>();
+	
+	private static BoardDAO instance = new BoardDAO();
+	public static BoardDAO getInstance() {
+		return instance;
+	}
+	
+	
+	
+	public BoardDAO() {
+		BoardVO board = new BoardVO();
+		SimpleDateFormat fDate = new SimpleDateFormat("yyyy-MM-dd");
+
+        Calendar c1 = Calendar.getInstance();
+
+        Date writeDate = fDate.format(c1.getTime());
+		
+		board.setTitle("게시물 입니당");
+		board.setAuthor("김작가");
+		board.setWriteDate("writeDate");
+	}
+
+
+
+	public ArrayList<BoardVO> getBoardList(){
+		return boardList;
+	}
+	
+	public void insertBoard(BoardVO board) {
+		boardList.add(board);
+	}
+	
+	
+}

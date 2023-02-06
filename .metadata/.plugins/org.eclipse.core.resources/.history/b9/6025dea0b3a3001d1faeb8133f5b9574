@@ -1,0 +1,40 @@
+package dto;
+
+import java.time.LocalDate;
+import java.util.Date;
+
+public class BoardVO {
+	private String title;
+	private String author;
+	private LocalDate writeDate;
+	private int hit;
+	
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getAuthor() {
+		return author;
+	}
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+	public LocalDate getWriteDate() {
+		return writeDate;
+	}
+	public void setWriteDate(LocalDate writeDate) {
+		this.writeDate = writeDate;
+	}
+	public int getHit() {
+		return hit;
+	}
+	public void setHit(int hit) {
+		this.hit = hit;
+	}
+	
+	
+	
+	
+}

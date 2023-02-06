@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;dto.BookVO.java&apos; to &apos;Book.java&apos;&#x0D;&#x0A;- Original project: &apos;BookMarket&apos;&#x0D;&#x0A;- Original element: &apos;dto.BookVO.java&apos;&#x0D;&#x0A;- Renamed element: &apos;dto.Book.java&apos;" description="Rename compilation unit &apos;BookVO.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;dto{BookVO.java" name="Book.java" references="false" stamp="1675081249221" version="1.0"/>
+</session>

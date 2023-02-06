@@ -1,0 +1,24 @@
+package dao;
+
+import java.util.ArrayList;
+
+import dto.BoardVO;
+
+public class BoardDAO {
+	
+	private ArrayList<BoardVO> boardList = new ArrayList<BoardVO>();
+	
+	private static BoardDAO instance = new BoardDAO();
+	public static BoardDAO getInstance() {
+		return instance;
+	}
+	
+	public ArrayList<BoardVO> getBoardList(){
+		return boardList;
+	}
+	
+	public void insertBoard(BoardVO board) {
+		boardList.add(board);
+	}
+	
+}

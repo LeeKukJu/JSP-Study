@@ -1,0 +1,94 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>@304_이국주</title>
+</head>
+<body>
+	<!-- 
+	게시판 FORM 페이지를 작성해주세요.
+	
+	[출력 예]
+	
+	게시글 등록
+	─────────────────────────────
+	제목 : 
+	작성자 : 
+	내용 :
+	─────────────────────────────
+	첨부파일 : [파일 선택 ]
+	─────────────────────────────
+	등록 목록
+	
+	1) 등록 버튼을 클릭 시, 게시글 등록을 진행해주세요.
+		등록을 위해 이동할 페이지(boardInsert.jsp)로 이동해서 등록 처리를 진행해주세요.
+		등록이 완료되었다면 현재 등록된 상세정보 페이지(boardView)로 이동해주세요.
+		
+		(정규식)
+		등록 시, 제목은 최소 모든 문자 5자에서 최대 30자까지로 설정가능하게 해주세요.
+		작성자는 영소대문자, 한글만 가능하게 설정해주세요. 
+		
+	2) 목록 버튼을 클릭 시, 게시판 목록 페이지로 이동해주세요(boardList.jsp)
+
+ -->
+
+	<%@include file="./menu.jsp"%>
+	<div class="jumbotron">
+		<div class="container" align="center">
+			<h1 class="display-4">게시글 등록</h1>
+		</div>
+	</div>
+
+	<div class="container">
+
+		<form action="./boardView?" method="post">
+
+			<!-- 제목 -->
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="basic-addon1">제목</span>
+				</div>
+				<input type="text" class="form-control" name="title"
+					placeholder="제목을 작성해주세요." aria-label="Username"
+					aria-describedby="basic-addon1">
+			</div>
+
+			<!-- 작성자 -->
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="basic-addon2">작성자</span>
+				</div>
+				<input type="text" class="form-control" name="author"
+					placeholder="작성자를 작성해주세요." aria-label="Username"
+					aria-describedby="basic-addon2">
+			</div>
+
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">내용</span>
+				</div>
+				<textarea class="form-control" name="content" style="height: 400px;"
+					aria-label="With textarea"></textarea>
+			</div><br>
+
+			<!-- 파일 업로드 -->
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text">업로드</span>
+				</div>
+				<div class="custom-file">
+					<input type="file" class="custom-file-input" id="inputGroupFile01">
+					<label class="custom-file-label" for="inputGroupFile01">파일 선택</label>
+				</div>
+			</div>
+			
+			<!-- Submit Button -->
+			<button type="submit" value="Submit Post" name="submit_post_btn" />
+			Submit Post
+			</button>
+		</form>
+	</div>
+</body>
+</html>
