@@ -17,30 +17,38 @@
 			<h1 class="display-3">상품 목록</h1>
 		</div>
 	</div>
-	<%
-		ProductRepository productDAO = ProductRepository.getInstance();
-		ArrayList<Product> listOfProducts = productDAO.getAllProducts();
-	%>
 	
 	<div class="container">
 		<div class="row" align="center">
+			<%@ include file="dbconn.jsp" %>
 			<%
-				for(int i = 0; i < listOfProducts.size(); i++){
-					Product product = listOfProducts.get(i);
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				
+				String sql = "select * from product";
+				pstmt = conn.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				while(rs.next()){
 			%>
 			<div class="col-md-4">
-				<img alt="" src="resources/images/<%=product.getFilename()%>"
+				<img alt="" src="${pageContext.request.contextPath}/resources/images/<%=rs.getString("p_filename")%>"
 					style="width:100%">
-				<h3><%=product.getPname() %></h3>
-				<p><%=product.getDescription() %></p>
-				<p><%=product.getUnitPrice() %>원</p>
+				<h3><%=rs.getString("p_name")%></h3>
+				<p><%=rs.getString("p_description")%></p>
+				<p><%=rs.getString("p_unitprice")%>원</p>
 				<p>
-					<a href="./product.jsp?id=<%=product.getProductId() %>" class="btn btn-secondary" 
+					<a href="./product.jsp?id=<%=rs.getString("p_id") %>" class="btn btn-secondary" 
 					role="button">상품정보 &raquo;</a>
 				</p>
 			</div>
-			<%		
+			<%
 				}
+				if(rs != null)
+					rs.close();
+				if(pstmt != null)
+					pstmt.close();
+				if(conn != null)
+					conn.close();
 			%>
 			
 		</div>
