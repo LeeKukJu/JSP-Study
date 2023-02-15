@@ -158,7 +158,6 @@
 
 	<security-constraint>
 		<web-resource-collection>
-			<description></description>
 			<web-resource-name>JSPBook</web-resource-name>
 			<url-pattern>/ch11/totaltest/boardForm.jsp</url-pattern>
 			<http-method>GET</http-method>
