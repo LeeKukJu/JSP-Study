@@ -1,3 +1,4 @@
+<%@page import="java.sql.PreparedStatement"%>
 <%@page import="org.apache.commons.fileupload.FileItem"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
@@ -7,6 +8,7 @@
 <%@page import="dao.ProductRepository"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="dbconn.jsp" %>    
 <%
 	request.setCharacterEncoding("UTF-8");
 
@@ -87,19 +89,39 @@
 		stock = Long.valueOf(unitsInStock);
 	}
 	
-	ProductRepository dao = ProductRepository.getInstance();
-	Product newProduct = new Product();
-	newProduct.setProductId(productId);
-	newProduct.setPname(name);
-	newProduct.setUnitPrice(price);
-	newProduct.setDescription(description);
-	newProduct.setManufacturer(manufacturer);
-	newProduct.setCategory(category);
-	newProduct.setUnitsInStock(stock);
-	newProduct.setCondition(condition);
-	newProduct.setFilename(fileName);
+// 	ProductRepository dao = ProductRepository.getInstance();
+// 	Product newProduct = new Product();
+// 	newProduct.setProductId(productId);
+// 	newProduct.setPname(name);
+// 	newProduct.setUnitPrice(price);
+// 	newProduct.setDescription(description);
+// 	newProduct.setManufacturer(manufacturer);
+// 	newProduct.setCategory(category);
+// 	newProduct.setUnitsInStock(stock);
+// 	newProduct.setCondition(condition);
+// 	newProduct.setFilename(fileName);
 	
-	dao.addProduct(newProduct);
+// 	dao.addProduct(newProduct);
+
+	PreparedStatement pstmt = null;
+	String sql = "insert into product values (?,?,?,?,?,?,?,?,?)";
+	pstmt = conn.prepareStatement(sql);
+	pstmt.setString(1, productId);
+	pstmt.setString(2, name);
+	pstmt.setInt(3, price);
+	pstmt.setString(4, description);
+	pstmt.setString(5, category);
+	pstmt.setString(6, manufacturer);
+	pstmt.setLong(7, stock);
+	pstmt.setString(8, condition);
+	pstmt.setString(9, fileName);
+	pstmt.executeUpdate();
+	
+	if(pstmt != null)
+		pstmt.close();
+	if(conn != null)
+		conn.close();
+
 	response.sendRedirect("products.jsp");
 %>
 
